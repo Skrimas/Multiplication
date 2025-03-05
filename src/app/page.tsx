@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 "use client"
 import React, { useState, useEffect } from "react";
 
+interface MultiplicationAppProps {}
 
-const MultiplicationApp: React.FC = () => {
+const MultiplicationApp: React.FC<MultiplicationAppProps> = () => {
   const [range, setRange] = useState<number>(5);
   const [num1, setNum1] = useState<number | null>(null);
   const [num2, setNum2] = useState<number | null>(null);
@@ -11,14 +15,14 @@ const MultiplicationApp: React.FC = () => {
   const [options, setOptions] = useState<number[]>([]);
   const [hasSelectedRange, setHasSelectedRange] = useState<boolean>(false);
 
-  const generateOptions = React.useCallback((correctAnswer: number): number[] => {
+  const generateOptions = (correctAnswer: number): number[] => {
     const answers = new Set<number>();
     answers.add(correctAnswer);
     while (answers.size < 6) {
       answers.add(Math.floor(Math.random() * (range * range)) + 1);
     }
     return Array.from(answers).sort(() => Math.random() - 0.5);
-  })
+  };
 
   useEffect(() => {
     const newNum1 = Math.floor(Math.random() * range) + 1;
