@@ -102,7 +102,7 @@ const MultiplicationApp: React.FC<MultiplicationAppProps> = () => {
         {Array.from({ length: towerHeight }).map((_, index) => (
           <div
             key={index}
-            className="h-12 w-3 md:h-16 md:w-4 bg-yellow-500 border border-black mr-1"
+            className="h-12 w-2 md:h-16 md:w-3 bg-yellow-500 border border-black mr-0.5"
           ></div>
         ))}
       </div>
