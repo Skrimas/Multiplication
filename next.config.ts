@@ -3,7 +3,7 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   output: 'export',
   basePath: '/Multiplication',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/Multiplication/' : '',
+  assetPrefix: '/Multiplication',
   typescript: {
     ignoreBuildErrors: false,
   },
