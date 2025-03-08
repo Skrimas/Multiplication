@@ -2,12 +2,12 @@ import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/Multiplication',  // Ensure this matches your repository name
-  assetPrefix: '/Multiplication/',
+  basePath: '/Multiplication',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/Multiplication/' : '',
   typescript: {
-    ignoreBuildErrors: false,  // Ensures TypeScript checks are not ignored
+    ignoreBuildErrors: false,
   },
-  trailingSlash: true,  // Important for GitHub Pages to correctly resolve paths
+  trailingSlash: true,
 };
 
 export default nextConfig;
