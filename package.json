@@ -3,14 +3,17 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "start": "next start",
-    "dev": "next dev",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "next build",
-    "lint": "next lint"
-  },
+"scripts": {
+  "start": "next start",
+  "dev": "next dev",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d out",
+  "build": "next build && next export",
+  "lint": "next lint"
+}
+  
+  
+  ,
   "dependencies": {
     "gh-pages": "^6.3.0",
     "next": "15.1.6",
