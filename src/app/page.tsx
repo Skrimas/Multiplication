@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect, useCallback } from "react";
 
-type MultiplicationAppProps = {};
+type MultiplicationAppProps = object;
 
 const MultiplicationApp: React.FC<MultiplicationAppProps> = () => {
   const [range, setRange] = useState<number>(5);
