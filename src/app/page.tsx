@@ -1,7 +1,7 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-interface MultiplicationAppProps {}
+type MultiplicationAppProps = {};
 
 const MultiplicationApp: React.FC<MultiplicationAppProps> = () => {
   const [range, setRange] = useState<number>(5);
@@ -12,14 +12,15 @@ const MultiplicationApp: React.FC<MultiplicationAppProps> = () => {
   const [options, setOptions] = useState<number[]>([]);
   const [hasSelectedRange, setHasSelectedRange] = useState<boolean>(false);
 
-  const generateOptions = (correctAnswer: number): number[] => {
+  
+const generateOptions = useCallback((correctAnswer: number): number[] => {
     const answers = new Set<number>();
     answers.add(correctAnswer);
     while (answers.size < 6) {
       answers.add(Math.floor(Math.random() * (range * range)) + 1);
     }
     return Array.from(answers).sort(() => Math.random() - 0.5);
-  };
+  }, [range]);
 
   useEffect(() => {
     const newNum1 = Math.floor(Math.random() * range) + 1;
@@ -32,7 +33,7 @@ const MultiplicationApp: React.FC<MultiplicationAppProps> = () => {
     if (num1 !== null && num2 !== null) {
       setOptions(generateOptions(num1 * num2));
     }
-  }, [num1, num2]);
+  }, [num1, num2, generateOptions]);
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newRange = parseInt(e.target.value);
